@@ -1,0 +1,69 @@
+/* Home Page Styles */
+
+.home-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+  
+  .home-page__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px; /* Account for fixed navigation */
+  }
+  
+  .home-page__error {
+    margin-bottom: 24px;
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+  }
+  
+  .home-page__error-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .home-page__error-icon {
+    font-size: 1.25rem;
+  }
+  
+  .home-page__error-text {
+    color: #dc2626;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .home-page__footer {
+    margin-top: auto;
+    padding-top: 48px;
+    text-align: center;
+  }
+  
+  .home-page__footer-text {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+    opacity: 0.8;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .home-page__container {
+      padding: 24px 16px;
+      padding-top: 90px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home-page__container {
+      padding: 16px 12px;
+      padding-top: 80px;
+    }
+  }
