@@ -67,3 +67,81 @@ export default tseslint.config([
   },
 ])
 ```
+
+
+## PLANNING OF THE PROJECT
+# Moodboard
+Color Palette:
+=> Primary Color: #4CAF50 (Green)
+=> Secondary Color: #FF9800 (Orange)
+=> Background Color: #F5F5F5 (Light Gray)
+=> Text Color: #212121 (Dark Gray)
+
+Typography:
+=> Headings: 'Roboto', sans-serif
+=> Body: 'Arial', sans-serif
+=> Component Layout:
+
+Component Layout:
+=> Header: Navigation bar with links to Home, Profile, and Login/Register.
+=> Main Area: Display the shopping list, add item form, and filter buttons.
+=> Footer: Basic information and links.
+
+# Step-by-Step Planning
+1. Feature Identification:
+=> User authentication (login/register)
+=> Shopping list management (add, remove, filter items)
+=> Shareable lists
+
+2. Task Breakdown:
+=> Implement user authentication:
+  * Create login and registration forms.
+  * Set up Redux slices for authentication.
+=> Implement shopping list features:
+  * Create components for adding and displaying items.
+  * Implement filtering functionality.
+=> Implement sharing functionality:
+  * Create a shareable link for lists.
+
+3. Assign Responsibilities:
+  * Frontend: Implement UI components and integrate with Redux.
+  * Backend (if applicable): Set up API endpoints for user authentication and list management.
+
+# Pseudocode
+// User Authentication Flow
+function login(username, password) {
+    if (validateCredentials(username, password)) {
+        store.user = fetchUserData(username);
+        redirectToHomePage();
+    } else {
+        showError("Invalid credentials");
+    }
+}
+
+function register(username, password) {
+    if (isUsernameAvailable(username)) {
+        createUser(username, password);
+        redirectToLoginPage();
+    } else {
+        showError("Username already taken");
+    }
+}
+
+// Shopping List Management
+function addItem(item) {
+    if (item.isValid()) {
+        store.shoppingList.push(item);
+        updateUI();
+    } else {
+        showError("Invalid item");
+    }
+}
+
+function removeItem(itemId) {
+    store.shoppingList = store.shoppingList.filter(item => item.id !== itemId);
+    updateUI();
+}
+
+function filterItems(criteria) {
+    return store.shoppingList.filter(item => item.matches(criteria));
+}
