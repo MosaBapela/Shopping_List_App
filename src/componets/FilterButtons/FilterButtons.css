@@ -1,0 +1,83 @@
+/* Filter Buttons Styles */
+
+.filter-buttons {
+    margin-bottom: 24px;
+  }
+  
+  .filter-buttons__header {
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .filter-buttons__header Text:first-child {
+    margin-bottom: 4px;
+  }
+  
+  .filter-buttons__group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+  
+  .filter-buttons__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+  }
+  
+  .filter-buttons__button:hover {
+    border-color: #3b82f6;
+    background: #f8faff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  }
+  
+  .filter-buttons__button--active {
+    border-color: #3b82f6;
+    background: #3b82f6;
+    color: white;
+  }
+  
+  .filter-buttons__button--active:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+  }
+  
+  .filter-buttons__button-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  
+  .filter-buttons__button-count {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+  .filter-buttons__button--active .filter-buttons__button-label,
+  .filter-buttons__button--active .filter-buttons__button-count {
+    color: white;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 480px) {
+    .filter-buttons__group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .filter-buttons__button {
+      flex-direction: row;
+      justify-content: space-between;
+      min-width: auto;
+    }
+  }
