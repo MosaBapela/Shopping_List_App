@@ -1,0 +1,259 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "demo@example.com",
+      "password": "password123",
+      "name": "Demo User",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "1756082068855",
+      "email": "mossman@gmail.com",
+      "password": "mossman123",
+      "name": "Mossman",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2025-08-25T00:34:28.855Z"
+    },
+    {
+      "id": "1756085085385",
+      "email": "mosabapela@gmail.com",
+      "password": "bW9zYWJhcGVsYQ==",
+      "name": "Mosa",
+      "surname": "Bapela",
+      "cellNumber": "0874561235",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2025-08-25T01:24:45.385Z"
+    },
+    {
+      "id": "demo-user-123",
+      "email": "demo@example.com",
+      "password": "cGFzc3dvcmQxMjM=",
+      "name": "Demo",
+      "surname": "User",
+      "cellNumber": "+1234567890",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2025-08-26T00:00:24.527Z"
+    },
+    {
+      "id": "1756166734474",
+      "email": "dineo@gmail.com",
+      "password": "ZGluZW9tYWd1Z3U=",
+      "name": "Dineo",
+      "surname": "Magugu",
+      "cellNumber": "0784562154",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2025-08-26T00:05:34.474Z"
+    },
+    {
+      "id": "1756173959460",
+      "email": "denis@gmail.com",
+      "password": "ZGVuaXNtb3lv",
+      "name": "denis",
+      "surname": "moyo",
+      "cellNumber": "0784569885",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2025-08-26T02:05:59.460Z"
+    }
+  ],
+  "shoppingLists": [
+    {
+      "id": "1",
+      "userId": "1",
+      "items": [
+        {
+          "id": "item-1",
+          "text": "Buy groceries for the week",
+          "completed": true,
+          "createdAt": 1704067200000,
+          "updatedAt": 1756082521561
+        },
+        {
+          "id": "item-2",
+          "text": "Pick up dry cleaning",
+          "completed": true,
+          "createdAt": 1704067100000,
+          "updatedAt": 1704067300000
+        },
+        {
+          "id": "768d2fbd-2a43-4441-9895-ac605e10b947",
+          "text": "apples/banANAS",
+          "completed": true,
+          "createdAt": 1756082535759,
+          "updatedAt": 1756082576860
+        }
+      ]
+    },
+    {
+      "id": "1756082068875",
+      "userId": "1756082068855",
+      "items": [
+        {
+          "id": "ea5f0634-6da7-4cd3-bcef-c50c87c0e027",
+          "text": "Apples",
+          "completed": true,
+          "createdAt": 1756082085970,
+          "updatedAt": 1756082121088
+        },
+        {
+          "id": "df872d2a-2175-4bf2-b740-153781c1cbe4",
+          "text": "Bananas",
+          "completed": true,
+          "createdAt": 1756082098372,
+          "updatedAt": 1756082122303
+        },
+        {
+          "id": "80afe88d-b7dc-4e37-b2a3-2fdf5e26a41f",
+          "text": "Pears",
+          "completed": true,
+          "createdAt": 1756082105274,
+          "updatedAt": 1756082123315
+        },
+        {
+          "id": "8cab0c1e-9695-40fd-88c7-d6413158273e",
+          "text": "Onions",
+          "completed": true,
+          "createdAt": 1756082117865,
+          "updatedAt": 1756082124299
+        }
+      ]
+    },
+    {
+      "id": "1756085085402",
+      "userId": "1756085085385",
+      "items": [
+        {
+          "id": "b6efb59f-25c4-4e19-8ebc-dd03583de117",
+          "text": "apple",
+          "completed": false,
+          "quantity": 2,
+          "notes": "fruits",
+          "category": "grocery",
+          "images": [
+            "https://www.bing.com/images/search?view=detailV2&ccid=j1%2fy6Mjv&id=FCA7DAF3192F6ED894A06283C40B6714EF568F94&thid=OIP.j1_y6Mjvzy5ORzCzm5GVHQHaGt&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.8f5ff2e8c8efcf2e4e4730b39b91951d%3frik%3dlI9W7xRnC8SDYg%26riu%3dhttp%253a%252f%252fupload.wikimedia.org%252fwikipedia%252fcommons%252f1%252f15%252fRed_Apple.jpg%26ehk%3dyc0sOMMcFxEbzUr6B6KnEj%252bAyx0nLaVXHkJ9iN73cUw%253d%26risl%3d%26pid%3dImgRaw%26r%3d0&exph=2192&expw=2418&q=apple&simid=608021173926964102&FORM=IRPRST&ck=9A00BA007A14975518035F9E7BBEBB15&selectedIndex=5&itb=0"
+          ],
+          "createdAt": 1756087060229,
+          "updatedAt": 1756147247858
+        },
+        {
+          "id": "b8ed1ad1-9a6c-4b4b-9fae-0e6904d4618e",
+          "text": "Oranges",
+          "completed": false,
+          "quantity": 3,
+          "category": "grocery",
+          "images": [
+            "https://media.istockphoto.com/id/185284489/photo/orange.jpg?b=1&s=612x612&w=0&k=20&c=P6dfluS7PhPHB4BpgWlNmsFOUyUuD8wQMPGOtnsBln4="
+          ],
+          "createdAt": 1756146501891,
+          "updatedAt": 1756166490159
+        }
+      ]
+    },
+    {
+      "id": "list-demo-user-123",
+      "userId": "demo-user-123",
+      "items": [
+        {
+          "id": "demo-item-1",
+          "text": "Organic Bananas",
+          "completed": false,
+          "quantity": 6,
+          "notes": "Get ripe ones for smoothies",
+          "category": "grocery",
+          "images": [
+            "https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop"
+          ],
+          "createdAt": 1756080024528,
+          "updatedAt": 1756080024528
+        },
+        {
+          "id": "demo-item-2",
+          "text": "Whole Grain Bread",
+          "completed": true,
+          "quantity": 1,
+          "notes": "Seeded variety preferred",
+          "category": "grocery",
+          "images": [],
+          "createdAt": 1755993624528,
+          "updatedAt": 1756162824528
+        },
+        {
+          "id": "demo-item-3",
+          "text": "Wireless Headphones",
+          "completed": false,
+          "quantity": 1,
+          "notes": "Noise-cancelling, budget under $100",
+          "category": "electronics",
+          "images": [
+            "https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop"
+          ],
+          "createdAt": 1755907224528,
+          "updatedAt": 1755907224528
+        },
+        {
+          "id": "demo-item-4",
+          "text": "Laundry Detergent",
+          "completed": false,
+          "quantity": 2,
+          "notes": "Eco-friendly brand",
+          "category": "household",
+          "images": [],
+          "createdAt": 1755820824528,
+          "updatedAt": 1755820824528
+        }
+      ]
+    },
+    {
+      "id": "1756166734481",
+      "userId": "1756166734474",
+      "items": [
+        {
+          "id": "70cdcf00-7622-486e-8738-7f22be94562a",
+          "text": "Juice 100 %",
+          "completed": false,
+          "quantity": 1,
+          "notes": "100% Apple Juice",
+          "category": "grocery",
+          "images": [
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.rypQYfrJBSZ9Qi6NkEy04QHaHa%3Fpid%3DApi&sp=1756174056Tc7f582d0d1952790896e85a16ce37a7eb2f698d302b9ad4b3f07ab3b4ebe107b",
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.EO9jaid5xCpyQZEpn_HJHQHaHa%3Fpid%3DApi&sp=1756174056T993b664780b56635680c1258f71055237467285abbbcf5531ef8c32b32e146a4"
+          ],
+          "createdAt": 1756166811504,
+          "updatedAt": 1756174118014
+        },
+        {
+          "id": "8de2a9ab-7ea8-4cef-a3f9-fcf05c0ebb03",
+          "text": "Maize Meal",
+          "completed": false,
+          "quantity": 1,
+          "notes": "10 Kg maize meal",
+          "category": "grocery",
+          "images": [
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.OFGeQOMfI70tM3jLyCbJNAAAAA%3Fpid%3DApi&sp=1756166897T8eacc379a89f43a33890e4ad38dda2d9c634d1c35e7e67e7e7e9698b757d46c2"
+          ],
+          "createdAt": 1756166910549,
+          "updatedAt": 1756166918021
+        },
+        {
+          "id": "92aca151-b06d-47b3-8949-ada9f6b6d8df",
+          "text": "Polony",
+          "completed": false,
+          "quantity": 1,
+          "notes": "French Polony",
+          "category": "grocery",
+          "images": [
+            "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.ppt9cSWEczufcQ2csGl8HgHaHa%3Fr%3D0%26pid%3DApi&sp=1756166975T2f5d93cc5318892b7970b6b512bba70033613c4d32b0eb774ddfb54b40475d10"
+          ],
+          "createdAt": 1756166992821,
+          "updatedAt": 1756166992821
+        }
+      ]
+    },
+    {
+      "id": "1756173959481",
+      "userId": "1756173959460",
+      "items": []
+    }
+  ]
+}
