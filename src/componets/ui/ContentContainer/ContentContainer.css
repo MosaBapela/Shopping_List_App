@@ -1,0 +1,96 @@
+/* Content Container Styles */
+/* This component provides consistent spacing and layout patterns */
+
+.content-container {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  /* Variant styles */
+  .content-container--default {
+    background: transparent;
+  }
+  
+  .content-container--card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .content-container--card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-container--section {
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .content-container--header {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    color: white;
+    border-radius: 16px;
+  }
+  
+  /* Padding variants */
+  .content-container--padding-none {
+    padding: 0;
+  }
+  
+  .content-container--padding-small {
+    padding: 12px;
+  }
+  
+  .content-container--padding-medium {
+    padding: 24px;
+  }
+  
+  .content-container--padding-large {
+    padding: 32px;
+  }
+  
+  /* Max width variants */
+  .content-container--max-width-small {
+    max-width: 400px;
+  }
+  
+  .content-container--max-width-medium {
+    max-width: 600px;
+  }
+  
+  .content-container--max-width-large {
+    max-width: 800px;
+  }
+  
+  .content-container--max-width-full {
+    max-width: 100%;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .content-container--padding-medium {
+      padding: 16px;
+    }
+    
+    .content-container--padding-large {
+      padding: 24px;
+    }
+    
+    .content-container {
+      margin: 0 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .content-container {
+      margin: 0 12px;
+    }
+    
+    .content-container--card {
+      border-radius: 8px;
+    }
+  }
