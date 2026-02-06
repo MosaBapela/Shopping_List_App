@@ -133,14 +133,23 @@ const formSlice = createSlice({
     setProfileFormEditing: (state, action: PayloadAction<boolean>) => {
       state.profileForm.isEditing = action.payload;
     },
+    // Populate profile form fields from the current user
+    setProfileFormFromUser: (state, action: PayloadAction<{ name?: string; surname?: string; email?: string; cellNumber?: string }>) => {
+      const { name, surname, email, cellNumber } = action.payload;
+      state.profileForm.name = name ?? '';
+      state.profileForm.surname = surname ?? '';
+      state.profileForm.email = email ?? '';
+      state.profileForm.cellNumber = cellNumber ?? '';
+    },
+    // Reset to empty defaults
     resetProfileForm: (state) => {
-      const { user } = state as any; // This will be populated from auth state
-      if (user) {
-        state.profileForm.name = user.name || '';
-        state.profileForm.surname = user.surname || '';
-        state.profileForm.email = user.email || '';
-        state.profileForm.cellNumber = user.cellNumber || '';
-      }
+      state.profileForm = {
+        name: '',
+        surname: '',
+        email: '',
+        cellNumber: '',
+        isEditing: false,
+      };
     },
 
     // Shopping List Item Edit Actions
@@ -175,6 +184,7 @@ export const {
   clearRegisterForm,
   setProfileFormField,
   setProfileFormEditing,
+  setProfileFormFromUser,
   resetProfileForm,
   setItemEditData,
   clearItemEditData,
