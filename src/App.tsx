@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// import React (not required in modern JSX runtime)
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
@@ -10,6 +10,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import SharedListPage from './pages/SharedListPage/SharedListPage';
 import './App.css';
 import ProtectedRoute from './componets/ProtectedRoute/ProtectedRoute';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
@@ -36,8 +37,8 @@ function App() {
               </ProtectedRoute>
             } />
             
-            {/* Redirect any unknown routes to home */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* 404 Not Found */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </Router>

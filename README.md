@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# Shopping List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application for managing shopping lists, built with React, TypeScript, Redux Toolkit, and Vite. Users can register, log in, create and organize shopping lists, search and sort items, and share lists with others. Data is persisted using a local JSON Server backend.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Register, log in, and manage your profile securely.
+- **Shopping List Management**: Add, edit, delete, and organize shopping list items with details like name, quantity, notes, category, and images.
+- **Search & Sort**: Quickly find items and sort by name, category, or date. Search and sort state is reflected in the URL for easy sharing and navigation.
+- **Protected Routes**: Only logged-in users can access main features; public pages for login, registration, and shared lists.
+- **Share Lists**: Generate a shareable link for your shopping list. Others can view your list in a read-only mode.
+- **Accessibility**: Clean UI, responsive design, and accessible controls.
+- **404 Page**: Friendly error page for unknown routes.
 
-## Expanding the ESLint configuration
+## How to Run the Project
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Requirements
+- Node.js 18+ (https://nodejs.org/)
+- npm (comes with Node.js)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Setup Steps (Windows PowerShell)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Install dependencies**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Start the JSON Server (backend API)**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npx json-server --watch db.json --port 3001
 ```
+
+3. **Start the Vite development server (frontend)**
+
+```powershell
+npm run dev
+```
+
+4. **Open the app in your browser**
+
+Visit the URL shown in the terminal (usually http://localhost:5173).
+
+### Demo Account
+- The app auto-creates a demo user (`demo@example.com` / `password123`) and sample list if you log in with those credentials.
+- You can also register your own account and start fresh.
+
+## Project Structure
+
+- `src/pages/` — Main app pages (Login, Register, Home, Profile, Shared, NotFound)
+- `src/componets/` — UI and feature components (forms, list, search/sort, share, etc.)
+- `src/store/` — Redux store and slices (auth, form, shopping list)
+- `src/services/api.ts` — API service for JSON Server
+- `db.json` — Local database for JSON Server (users, shoppingLists, sharedLists)
+
+## Troubleshooting
+- If login fails, make sure JSON Server is running and `db.json` is not corrupted.
+- If sharing returns 404, check that `sharedLists` exists in `db.json` and the share token is correct.
+- To reset the app, clear `db.json` to empty arrays for users, shoppingLists, and sharedLists.

@@ -6,6 +6,7 @@ import { updateUserProfile, logout } from '../../store/slices/authSlice';
 import { 
   setProfileFormField, 
   setProfileFormEditing, 
+  setProfileFormFromUser,
   resetProfileForm 
 } from '../../store/slices/formSlice';
 import './ProfilePage.css';
@@ -27,8 +28,16 @@ const ProfilePage: React.FC = () => {
   };
 
   useEffect(() => {
-    // Reset form when user data changes
+    // Populate form when user data changes
     if (user) {
+      dispatch(setProfileFormFromUser({
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        cellNumber: user.cellNumber,
+      }));
+      dispatch(setProfileFormEditing(false));
+    } else {
       dispatch(resetProfileForm());
     }
   }, [user, dispatch]);
@@ -63,7 +72,16 @@ const ProfilePage: React.FC = () => {
   };
 
   const handleCancel = () => {
-    dispatch(resetProfileForm());
+    if (user) {
+      dispatch(setProfileFormFromUser({
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        cellNumber: user.cellNumber,
+      }));
+    } else {
+      dispatch(resetProfileForm());
+    }
     dispatch(setProfileFormEditing(false));
   };
 

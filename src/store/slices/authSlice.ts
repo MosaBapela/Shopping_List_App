@@ -1,6 +1,6 @@
 // Authentication Redux slice
-import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
-import type { AuthState, User, LoginCredentials, RegisterCredentials, UserUpdateData } from '../../types';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { AuthState, LoginCredentials, RegisterCredentials, UserUpdateData } from '../../types';
 import { authAPI } from '../../services/api';
 
 // Async thunks
@@ -9,7 +9,6 @@ export const loginUser = createAsyncThunk(
   async (credentials: LoginCredentials, { rejectWithValue }) => {
     try {
       const user = await authAPI.login(credentials);
-      localStorage.setItem('user', JSON.stringify(user));
       return user;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Login failed');
@@ -22,7 +21,6 @@ export const registerUser = createAsyncThunk(
   async (credentials: RegisterCredentials, { rejectWithValue }) => {
     try {
       const user = await authAPI.register(credentials);
-      localStorage.setItem('user', JSON.stringify(user));
       return user;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Registration failed');
@@ -35,7 +33,6 @@ export const updateUserProfile = createAsyncThunk(
   async ({ userId, updates }: { userId: string; updates: UserUpdateData }, { rejectWithValue }) => {
     try {
       const user = await authAPI.updateProfile(userId, updates);
-      localStorage.setItem('user', JSON.stringify(user));
       return user;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Profile update failed');
@@ -43,19 +40,10 @@ export const updateUserProfile = createAsyncThunk(
   }
 );
 
-// Get user from localStorage
-const getUserFromStorage = (): User | null => {
-  try {
-    const userStr = localStorage.getItem('user');
-    return userStr ? JSON.parse(userStr) : null;
-  } catch {
-    return null;
-  }
-};
-
+// Require login on every fresh app load (no persisted auth)
 const initialState: AuthState = {
-  user: getUserFromStorage(),
-  isAuthenticated: !!getUserFromStorage(),
+  user: null,
+  isAuthenticated: false,
   isLoading: false,
   error: null,
 };
@@ -68,6 +56,7 @@ const authSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
       state.error = null;
+      // Clear any legacy persisted data if present
       localStorage.removeItem('user');
     },
     clearError: (state) => {
