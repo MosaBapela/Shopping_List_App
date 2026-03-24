@@ -1,6 +1,6 @@
 // Shopping List Redux Slice with API integration - Enhanced with search, sort, and update
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
-import type { ShoppingListState, ShoppingItem, FilterType, SortType, ShoppingItemUpdate, ShareableList } from '../../types';
+import type { ShoppingListState, ShoppingItem, FilterType, SortType, ShoppingItemUpdate } from '../../types';
 import { shoppingListAPI } from '../../services/api';
 
 // Async thunks for API calls
@@ -190,10 +190,10 @@ const shoppingListSlice = createSlice({
 
     // Save shopping list
     builder
-      .addCase(saveShoppingList.pending, (state) => {
+      .addCase(saveShoppingList.pending, (_state) => {
         // Don't show loading for saves to keep UI responsive
       })
-      .addCase(saveShoppingList.fulfilled, (state, action) => {
+      .addCase(saveShoppingList.fulfilled, (state, _action) => {
         // Items already updated by local actions
         state.error = null;
       })

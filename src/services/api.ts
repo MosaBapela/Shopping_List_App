@@ -1,6 +1,6 @@
 // API service for communicating with JSON server - Enhanced with sharing functionality
 import axios from 'axios';
-import type { User, LoginCredentials, RegisterCredentials, ShoppingList, ShoppingItem, UserUpdateData, ShareableList } from '../types';
+import type { User, LoginCredentials, RegisterCredentials, ShoppingItem, UserUpdateData, ShareableList } from '../types';
 
 const API_BASE_URL = 'http://localhost:3001';
 
