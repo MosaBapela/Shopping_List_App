@@ -1,8 +1,75 @@
-/* Search and Sort Component Styles */
-
+/* ── Search & Sort ── */
 .search-sort {
-    margin-bottom: 24px;
-  }
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.search-sort__search-wrap {
+  flex: 1;
+  min-width: 180px;
+  position: relative;
+}
+.search-sort__search-icon {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
+  color: var(--color-neutral-400);
+}
+.search-sort__input {
+  width: 100%;
+  padding: 10px 36px 10px 36px;
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  background: var(--color-neutral-0);
+  color: var(--color-neutral-800);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+.search-sort__input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+}
+.search-sort__input::placeholder { color: var(--color-neutral-400); }
+.search-sort__clear {
+  position: absolute;
+  right: 10px; top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px;
+  border-radius: var(--radius-full);
+  background: var(--color-neutral-200);
+  color: var(--color-neutral-600);
+  font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition-fast);
+  cursor: pointer;
+}
+.search-sort__clear:hover { background: var(--color-neutral-300); }
+
+.search-sort__select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  background: var(--color-neutral-0);
+  color: var(--color-neutral-700);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  white-space: nowrap;
+}
+.search-sort__select:focus { border-color: var(--color-primary-500); }
+
+@media (max-width: 520px) {
+  .search-sort { flex-direction: column; align-items: stretch; }
+  .search-sort__select { width: 100%; }
+}
+
   
   .search-sort__header {
     margin-bottom: 16px;

@@ -1,64 +1,39 @@
 // Filter Buttons Component
-// Provides filtering options for the shopping list
-// Shows counts for each filter category
-
 import React from 'react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { setFilter, type FilterType } from '../../store/slices/shoppingListSlice';
-import ContentContainer from '../ui/ContentContainer/ContentContainer';
-import Text from '../ui/Text/Text';
+import { setFilter } from '../../store/slices/shoppingListSlice';
+import type { FilterType } from '../../types';
 import './FilterButtons.css';
 
 const FilterButtons: React.FC = () => {
   const { items, filter } = useAppSelector(state => state.shoppingList);
   const dispatch = useAppDispatch();
 
-  // Calculate counts for each filter
-  const allCount = items.length;
-  const activeCount = items.filter(item => !item.completed).length;
-  const completedCount = items.filter(item => item.completed).length;
+  const allCount       = items.length;
+  const activeCount    = items.filter(item => !item.completed).length;
+  const completedCount = items.filter(item =>  item.completed).length;
 
-  const filterOptions: { key: FilterType; label: string; count: number }[] = [
-    { key: 'all', label: 'All Items', count: allCount },
-    { key: 'active', label: 'Active', count: activeCount },
-    { key: 'completed', label: 'Completed', count: completedCount },
+  const options: { key: FilterType; label: string; count: number; icon: string }[] = [
+    { key: 'all',       label: 'All',       count: allCount,       icon: '' },
+    { key: 'active',    label: 'Active',    count: activeCount,    icon: '' },
+    { key: 'completed', label: 'Done',      count: completedCount, icon: '' },
   ];
 
-  const handleFilterChange = (newFilter: FilterType) => {
-    dispatch(setFilter(newFilter));
-  };
-
   return (
-    <ContentContainer variant="section" padding="medium" className="filter-buttons">
-      <div className="filter-buttons__header">
-        <Text variant="h4" weight="semibold" color="primary">
-          Filter Items
-        </Text>
-        <Text variant="small" color="muted">
-          Show items by status
-        </Text>
-      </div>
-
-      <div className="filter-buttons__group">
-        {filterOptions.map((option) => (
-          <button
-            key={option.key}
-            onClick={() => handleFilterChange(option.key)}
-            className={`filter-buttons__button ${
-              filter === option.key ? 'filter-buttons__button--active' : ''
-            }`}
-          >
-            <span className="filter-buttons__button-label">
-              {option.label}
-            </span>
-            <span className="filter-buttons__button-count">
-              {option.count}
-            </span>
-          </button>
-        ))}
-      </div>
-    </ContentContainer>
+    <div className="filter-bar">
+      {options.map(o => (
+        <button
+          key={o.key}
+          onClick={() => dispatch(setFilter(o.key))}
+          className={`filter-bar__btn ${filter === o.key ? 'filter-bar__btn--active' : ''}`}
+        >
+          <span className="filter-bar__icon">{o.icon}</span>
+          <span className="filter-bar__label">{o.label}</span>
+          <span className="filter-bar__badge">{o.count}</span>
+        </button>
+      ))}
+    </div>
   );
 };
 

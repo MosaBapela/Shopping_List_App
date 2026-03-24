@@ -1,53 +1,83 @@
-/* 404 Not Found Page Styles */
+﻿/* ============================================================
+   NotFoundPage.css
+   ============================================================ */
 
-.not-found-page {
+.not-found {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  color: #1f2937;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary-900) 0%, #0f172a 100%);
 }
 
-.not-found-page__container {
+.not-found__card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 2.5rem;
+  max-width: 440px;
   width: 100%;
-  max-width: 640px;
-  padding: 24px;
-  box-sizing: border-box;
-}
-
-.not-found-page__card {
   text-align: center;
-}
-
-.not-found-page__icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-}
-
-.not-found-page__title {
-  margin-bottom: 8px;
-}
-
-.not-found-page__subtitle {
-  margin-bottom: 24px;
-}
-
-.not-found-page__actions {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-xl);
+  animation: fadeInUp 0.5s ease both;
 }
 
-.not-found-page__home-button {
-  background: #3b82f6;
+.not-found__code {
+  font-size: clamp(4rem, 14vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+}
+
+.not-found__icon {
+  font-size: 3rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.4));
+}
+
+.not-found__title {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  cursor: pointer;
+  margin: 0.25rem 0 0;
 }
 
-.not-found-page__home-button:hover {
-  background: #1e40af;
+.not-found__sub {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.not-found__btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.not-found__btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.not-found__btn:active {
+  transform: translateY(0);
 }

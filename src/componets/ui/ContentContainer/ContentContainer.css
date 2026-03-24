@@ -1,11 +1,45 @@
-/* Content Container Styles */
-/* This component provides consistent spacing and layout patterns */
-
+/* ContentContainer – thin layout wrapper */
 .content-container {
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Variants */
+.content-container--default  { background: transparent; }
+
+.content-container--card {
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
+}
+.content-container--card:hover { box-shadow: var(--shadow-md); }
+
+.content-container--section {
+  background: var(--color-neutral-0);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+}
+
+.content-container--header {
+  background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-800) 100%);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+/* Padding */
+.content-container--padding-none   { padding: 0; }
+.content-container--padding-small  { padding: 12px 16px; }
+.content-container--padding-medium { padding: 20px 24px; }
+.content-container--padding-large  { padding: 32px 36px; }
+
+/* Max-width */
+.content-container--max-width-small  { max-width: 480px;  margin-inline: auto; }
+.content-container--max-width-medium { max-width: 760px;  margin-inline: auto; }
+.content-container--max-width-large  { max-width: 1100px; margin-inline: auto; }
+.content-container--max-width-full   { max-width: none; }
+
   
   /* Variant styles */
   .content-container--default {
