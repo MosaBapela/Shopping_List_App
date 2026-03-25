@@ -1,4 +1,3 @@
-// Filter Buttons Component
 import React from 'react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';

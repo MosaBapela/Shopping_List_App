@@ -1,5 +1,4 @@
-﻿// Shopping List Component
-import React from 'react';
+﻿import React from 'react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { clearCompleted, toggleAll } from '../../store/slices/shoppingListSlice';

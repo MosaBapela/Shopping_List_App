@@ -1,7 +1,3 @@
-// Add Item Form Component
-// Handles adding new items to the shopping list
-// Includes form validation and user feedback
-
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
@@ -17,21 +13,16 @@ const AddItemForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const trimmedValue = inputValue.trim();
     if (!trimmedValue) return;
 
     setIsSubmitting(true);
 
     try {
-      // Generate unique ID and dispatch the action
       const newId = uuidv4();
       dispatch(addItem({ id: newId, text: trimmedValue }));
-      
-      // Clear the input
       setInputValue('');
-      
-      // Small delay for better UX
       await new Promise(resolve => setTimeout(resolve, 200));
     } finally {
       setIsSubmitting(false);
@@ -75,7 +66,7 @@ const AddItemForm: React.FC = () => {
             )}
           </button>
         </div>
-        
+
         <div className="add-item-form__hint">
           <Text variant="small" color="muted">
             Press Enter or click "Add Item" to add to your list

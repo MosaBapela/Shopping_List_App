@@ -1,7 +1,3 @@
-// Reusable Content Container Component
-// This replaces the need for multiple divs and provides consistent spacing
-// It's a flexible container that can be used throughout the app
-
 import React from 'react';
 import './ContentContainer.css';
 

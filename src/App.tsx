@@ -1,4 +1,3 @@
-// import React (not required in modern JSX runtime)
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
@@ -18,14 +17,9 @@ function App() {
       <Router>
         <div className="app">
           <Routes>
-            {/* Public Routes */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            
-            {/* Shared List Route (Public) */}
             <Route path="/shared/:shareToken" element={<SharedListPage />} />
-            
-            {/* Protected Routes */}
             <Route path="/" element={
               <ProtectedRoute>
                 <HomePage />
@@ -36,8 +30,6 @@ function App() {
                 <ProfilePage />
               </ProtectedRoute>
             } />
-            
-            {/* 404 Not Found */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

@@ -1,4 +1,3 @@
-// Shopping List Header Component
 import React from 'react';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import './ShoppingListHeader.css';

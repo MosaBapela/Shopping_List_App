@@ -1,5 +1,4 @@
-﻿// Shopping List Item Component
-import React, { useRef, useEffect } from 'react';
+﻿import React, { useRef, useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { toggleItem, deleteItem, startEditing, cancelEditing, updateItem } from '../../store/slices/shoppingListSlice';
@@ -89,14 +88,12 @@ const ShoppingListItem: React.FC<Props> = ({ item, index }) => {
       {isEditing ? (
         <div className="sl-item__edit">
           <div className="sl-item__edit-grid">
-            {/* Name */}
             <div className="sl-item__edit-full">
               <label className="sl-item__edit-label">Item Name</label>
               <input ref={editRef} type="text" value={ed.text} onChange={e => setEd('text', e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') handleSave(); if (e.key === 'Escape') dispatch(cancelEditing()); }}
                 className="sl-item__edit-input" maxLength={100} />
             </div>
-            {/* Qty */}
             <div>
               <label className="sl-item__edit-label">Quantity</label>
               <div className="sl-item__edit-qty-row">
@@ -105,19 +102,16 @@ const ShoppingListItem: React.FC<Props> = ({ item, index }) => {
                 <button type="button" className="sl-item__edit-qty-btn" onClick={() => setEd('quantity', ed.quantity + 1)}>+</button>
               </div>
             </div>
-            {/* Category */}
             <div>
               <label className="sl-item__edit-label">Category</label>
               <select value={ed.category} onChange={e => setEd('category', e.target.value)} className="sl-item__edit-select">
                 {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
               </select>
             </div>
-            {/* Notes */}
             <div className="sl-item__edit-full">
               <label className="sl-item__edit-label">Notes</label>
               <textarea value={ed.notes} onChange={e => setEd('notes', e.target.value)} className="sl-item__edit-textarea" maxLength={500} />
             </div>
-            {/* Images */}
             <div className="sl-item__edit-full">
               <label className="sl-item__edit-label">Images</label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>

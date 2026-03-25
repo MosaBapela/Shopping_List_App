@@ -1,5 +1,4 @@
-﻿// Home Page
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';

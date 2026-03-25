@@ -1,8 +1,3 @@
-// Reusable Text Component
-// This provides consistent typography throughout the app
-// It handles different text variants, sizes, and colors
-
-
 import type { JSX } from 'react';
 import './Text.css';
 
@@ -27,10 +22,9 @@ const Text: React.FC<TextProps> = ({
   truncate = false,
   as,
 }) => {
-  // Determine the HTML element to use
   const getElementType = (): keyof JSX.IntrinsicElements => {
     if (as) return as;
-    
+
     switch (variant) {
       case 'h1': return 'h1';
       case 'h2': return 'h2';

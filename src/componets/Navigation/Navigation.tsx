@@ -1,4 +1,3 @@
-// Navigation Component
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useAppSelector';
@@ -13,13 +12,11 @@ const Navigation: React.FC = () => {
   return (
     <nav className="nav">
       <div className="nav__inner">
-        {/* Brand */}
         <Link to="/" className="nav__brand">
           <div className="nav__brand-icon">🛒</div>
           <span className="nav__brand-text">ShopList</span>
         </Link>
 
-        {/* Links */}
         <div className="nav__links">
           <Link to="/" className={`nav__link ${isActive('/') ? 'nav__link--active' : ''}`}>
             <span>🏠</span>
@@ -31,7 +28,6 @@ const Navigation: React.FC = () => {
           </Link>
         </div>
 
-        {/* User chip */}
         {user && (
           <Link to="/profile" className="nav__user-chip">
             {user.avatar ? (

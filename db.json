@@ -19,6 +19,16 @@
       "cellNumber": "+1234567890",
       "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
       "createdAt": "2026-02-06T14:07:30.554Z"
+    },
+    {
+      "id": "1774387592318",
+      "email": "jason@gmail.com",
+      "password": "MTIzNDU2Nzg5",
+      "name": "Jason",
+      "surname": "Bourne",
+      "cellNumber": "0745689541",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2026-03-24T21:26:32.318Z"
     }
   ],
   "shoppingLists": [
@@ -81,6 +91,11 @@
           "updatedAt": 1770041250555
         }
       ]
+    },
+    {
+      "id": "1774387592352",
+      "userId": "1774387592318",
+      "items": []
     }
   ],
   "sharedLists": [

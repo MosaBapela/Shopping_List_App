@@ -1,4 +1,3 @@
-// Form Redux Slice for managing form states across components
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface FormState {
@@ -84,7 +83,6 @@ const formSlice = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    // Add Item Form Actions
     setAddItemFormField: (state, action: PayloadAction<{ field: string; value: any }>) => {
       const { field, value } = action.payload;
       if (field in state.addItemForm) {
@@ -101,7 +99,6 @@ const formSlice = createSlice({
       state.addItemForm.isSubmitting = action.payload;
     },
 
-    // Login Form Actions
     setLoginFormField: (state, action: PayloadAction<{ field: string; value: any }>) => {
       const { field, value } = action.payload;
       if (field in state.loginForm) {
@@ -112,7 +109,6 @@ const formSlice = createSlice({
       state.loginForm = initialState.loginForm;
     },
 
-    // Register Form Actions
     setRegisterFormField: (state, action: PayloadAction<{ field: string; value: any }>) => {
       const { field, value } = action.payload;
       if (field in state.registerForm) {
@@ -123,7 +119,6 @@ const formSlice = createSlice({
       state.registerForm = initialState.registerForm;
     },
 
-    // Profile Form Actions
     setProfileFormField: (state, action: PayloadAction<{ field: string; value: any }>) => {
       const { field, value } = action.payload;
       if (field in state.profileForm) {
@@ -133,7 +128,6 @@ const formSlice = createSlice({
     setProfileFormEditing: (state, action: PayloadAction<boolean>) => {
       state.profileForm.isEditing = action.payload;
     },
-    // Populate profile form fields from the current user
     setProfileFormFromUser: (state, action: PayloadAction<{ name?: string; surname?: string; email?: string; cellNumber?: string }>) => {
       const { name, surname, email, cellNumber } = action.payload;
       state.profileForm.name = name ?? '';
@@ -141,7 +135,6 @@ const formSlice = createSlice({
       state.profileForm.email = email ?? '';
       state.profileForm.cellNumber = cellNumber ?? '';
     },
-    // Reset to empty defaults
     resetProfileForm: (state) => {
       state.profileForm = {
         name: '',
@@ -152,7 +145,6 @@ const formSlice = createSlice({
       };
     },
 
-    // Shopping List Item Edit Actions
     setItemEditData: (state, action: PayloadAction<{ itemId: string; data: Partial<FormState['shoppingListItemEdit'][string]> }>) => {
       const { itemId, data } = action.payload;
       if (!state.shoppingListItemEdit[itemId]) {
