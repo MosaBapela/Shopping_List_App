@@ -28,7 +28,7 @@ export const registerUser = createAsyncThunk(
 
 export const updateUserProfile = createAsyncThunk(
   'auth/updateProfile',
-  async ({ userId, updates }: { userId: string; updates: UserUpdateData }, { rejectWithValue }) => {
+  async ({ userId, updates }: { userId: string; updates: UserUpdateData & { currentPassword?: string } }, { rejectWithValue }) => {
     try {
       const user = await authAPI.updateProfile(userId, updates);
       return user;

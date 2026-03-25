@@ -95,7 +95,34 @@
     {
       "id": "1774387592352",
       "userId": "1774387592318",
-      "items": []
+      "items": [
+        {
+          "id": "eb2392a5-f3ad-468b-acd4-d9a436607395",
+          "text": "Orange",
+          "completed": false,
+          "quantity": 4,
+          "notes": "Fresh oranges",
+          "category": "grocery",
+          "images": [
+            "https://th.bing.com/th/id/OIP.NTeLrolKUYCqPBP9UmktTQHaHa?w=174&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+          ],
+          "createdAt": 1774422591610,
+          "updatedAt": 1774422601560
+        },
+        {
+          "id": "705e29d0-0a9a-46ba-a2ee-0cb46725452f",
+          "text": "Table",
+          "completed": false,
+          "quantity": 1,
+          "notes": "Strong table",
+          "category": "household",
+          "images": [
+            "https://th.bing.com/th/id/OIP.X5sKDKQkrZcD0v2xznRmuAHaFj?w=279&h=210&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+          ],
+          "createdAt": 1774422654837,
+          "updatedAt": 1774422654837
+        }
+      ]
     }
   ],
   "sharedLists": [

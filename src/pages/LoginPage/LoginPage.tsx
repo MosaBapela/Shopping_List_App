@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { loginUser, clearError } from '../../store/slices/authSlice';
 import { setLoginFormField, clearLoginForm } from '../../store/slices/formSlice';
+import { useToast } from '../../context/ToastContext';
 import './LoginPage.css';
 
 const EyeIcon = () => (
@@ -29,8 +30,17 @@ const LoginPage: React.FC = () => {
   const { loginForm } = useAppSelector(s => s.form);
   const { email, password, showPassword } = loginForm;
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/';
+  const { showToast } = useToast();
+  const hasLoggedIn = React.useRef(false);
 
-  useEffect(() => { if (isAuthenticated) navigate(from, { replace: true }); }, [isAuthenticated, navigate, from]);
+  useEffect(() => {
+    if (isAuthenticated && !hasLoggedIn.current) {
+      hasLoggedIn.current = true;
+      showToast('success', 'Welcome back!', `You are now signed in.`);
+      navigate(from, { replace: true });
+    }
+  }, [isAuthenticated, navigate, from, showToast]);
+
   useEffect(() => { dispatch(clearError()); dispatch(clearLoginForm()); }, [dispatch]);
 
   const set = (field: string, value: string | boolean) => dispatch(setLoginFormField({ field, value }));

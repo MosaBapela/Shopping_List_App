@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { ToastProvider } from './context/ToastContext';
 
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
@@ -14,6 +15,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 function App() {
   return (
     <Provider store={store}>
+      <ToastProvider>
       <Router>
         <div className="app">
           <Routes>
@@ -34,6 +36,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      </ToastProvider>
     </Provider>
   );
 }

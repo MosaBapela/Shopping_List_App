@@ -279,3 +279,26 @@
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
+
+.profile-page__pw-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.profile-page__pw-wrap .profile-page__input {
+  width: 100%;
+  padding-right: 2.75rem;
+}
+.profile-page__pw-toggle {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-neutral-400);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.15s;
+}
+.profile-page__pw-toggle:hover { color: var(--color-neutral-700); }

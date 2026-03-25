@@ -141,13 +141,20 @@ export const authAPI = {
     return user;
   },
 
-  updateProfile: async (userId: string, updates: UserUpdateData): Promise<User> => {
-    let updatedData = { ...updates };
+  updateProfile: async (userId: string, updates: UserUpdateData & { currentPassword?: string }): Promise<User> => {
     if (updates.password) {
-      updatedData = {
-        ...updates,
-        password: encryptPassword(updates.password),
-      };
+      const userResponse = await api.get(`/users/${userId}`);
+      const existingUser = userResponse.data;
+      const decryptedStored = decryptPassword(existingUser.password);
+      if (!updates.currentPassword || decryptedStored !== updates.currentPassword) {
+        throw new Error('Current password is incorrect');
+      }
+    }
+
+    const { currentPassword: _cp, ...rest } = updates as any;
+    let updatedData: any = { ...rest };
+    if (rest.password) {
+      updatedData.password = encryptPassword(rest.password);
     }
 
     const response = await api.patch(`/users/${userId}`, updatedData);

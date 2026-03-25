@@ -31,6 +31,12 @@ interface FormState {
     email: string;
     cellNumber: string;
     isEditing: boolean;
+    currentPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+    showCurrentPassword: boolean;
+    showNewPassword: boolean;
+    showConfirmNewPassword: boolean;
   };
   shoppingListItemEdit: {
     [itemId: string]: {
@@ -75,6 +81,12 @@ const initialState: FormState = {
     email: '',
     cellNumber: '',
     isEditing: false,
+    currentPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
+    showCurrentPassword: false,
+    showNewPassword: false,
+    showConfirmNewPassword: false,
   },
   shoppingListItemEdit: {},
 };
@@ -142,6 +154,12 @@ const formSlice = createSlice({
         email: '',
         cellNumber: '',
         isEditing: false,
+        currentPassword: '',
+        newPassword: '',
+        confirmNewPassword: '',
+        showCurrentPassword: false,
+        showNewPassword: false,
+        showConfirmNewPassword: false,
       };
     },
 

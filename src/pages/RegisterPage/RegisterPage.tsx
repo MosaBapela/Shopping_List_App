@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { registerUser, clearError } from '../../store/slices/authSlice';
 import { setRegisterFormField, clearRegisterForm } from '../../store/slices/formSlice';
+import { useToast } from '../../context/ToastContext';
 import './RegisterPage.css';
 
 const EyeIcon = () => (
@@ -28,10 +29,16 @@ const RegisterPage: React.FC = () => {
   const { isLoading, error, isAuthenticated } = useAppSelector(state => state.auth);
   const { registerForm } = useAppSelector(state => state.form);
   const { name, surname, email, cellNumber, password, confirmPassword, showPassword, showConfirmPassword } = registerForm;
+  const { showToast } = useToast();
+  const hasRegistered = React.useRef(false);
 
   useEffect(() => {
-    if (isAuthenticated) navigate('/', { replace: true });
-  }, [isAuthenticated, navigate]);
+    if (isAuthenticated && !hasRegistered.current) {
+      hasRegistered.current = true;
+      showToast('success', 'Account created!', 'Welcome to ShopList. You are now signed in.');
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate, showToast]);
 
   useEffect(() => {
     dispatch(clearError());
