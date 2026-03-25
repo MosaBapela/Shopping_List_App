@@ -6,6 +6,25 @@ import type { ShoppingItem } from '../../types';
 import ShoppingListItem from '../ShoppingListItem/ShoppingListItem';
 import './ShoppingList.css';
 
+const IconSearch = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+);
+
+const IconCheckAll = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+
+const IconClipboard = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+    <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+  </svg>
+);
+
 const ShoppingList: React.FC = () => {
   const { items, filter, searchQuery, sortBy } = useAppSelector(s => s.shoppingList);
   const dispatch = useAppDispatch();
@@ -80,7 +99,9 @@ const ShoppingList: React.FC = () => {
 
       {final.length === 0 ? (
         <div className="sl-list__empty">
-          <div className="sl-list__empty-icon">{searchQuery ? '&#128269;' : filter === 'completed' ? '&#9989;' : '&#128203;'}</div>
+          <div className="sl-list__empty-icon">
+            {searchQuery ? <IconSearch /> : filter === 'completed' ? <IconCheckAll /> : <IconClipboard />}
+          </div>
           <p className="sl-list__empty-title">{emptyMsg()}</p>
           {!hasItems && !searchQuery && (
             <p className="sl-list__empty-sub">Add your first item using the form above</p>

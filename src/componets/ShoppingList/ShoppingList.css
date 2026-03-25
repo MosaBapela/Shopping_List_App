@@ -39,7 +39,8 @@
   text-align: center;
   padding: 56px 24px;
 }
-.sl-list__empty-icon { font-size: 3rem; margin-bottom: 14px; }
+.sl-list__empty-icon { font-size: 3rem; margin-bottom: 14px; color: var(--color-neutral-400); }
+.sl-list__empty-icon svg { width: 48px; height: 48px; display: block; }
 .sl-list__empty-title {
   font-size: 1.1rem;
   font-weight: 700;
