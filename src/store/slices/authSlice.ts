@@ -1,9 +1,7 @@
-// Authentication Redux slice
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { AuthState, LoginCredentials, RegisterCredentials, UserUpdateData } from '../../types';
 import { authAPI } from '../../services/api';
 
-// Async thunks
 export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials: LoginCredentials, { rejectWithValue }) => {
@@ -30,7 +28,7 @@ export const registerUser = createAsyncThunk(
 
 export const updateUserProfile = createAsyncThunk(
   'auth/updateProfile',
-  async ({ userId, updates }: { userId: string; updates: UserUpdateData }, { rejectWithValue }) => {
+  async ({ userId, updates }: { userId: string; updates: UserUpdateData & { currentPassword?: string } }, { rejectWithValue }) => {
     try {
       const user = await authAPI.updateProfile(userId, updates);
       return user;
@@ -40,7 +38,6 @@ export const updateUserProfile = createAsyncThunk(
   }
 );
 
-// Require login on every fresh app load (no persisted auth)
 const initialState: AuthState = {
   user: null,
   isAuthenticated: false,
@@ -56,7 +53,6 @@ const authSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
       state.error = null;
-      // Clear any legacy persisted data if present
       localStorage.removeItem('user');
     },
     clearError: (state) => {
@@ -64,7 +60,6 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Login
     builder
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
@@ -81,7 +76,6 @@ const authSlice = createSlice({
         state.error = action.payload as string;
       });
 
-    // Register
     builder
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
@@ -98,7 +92,6 @@ const authSlice = createSlice({
         state.error = action.payload as string;
       });
 
-    // Update Profile
     builder
       .addCase(updateUserProfile.pending, (state) => {
         state.isLoading = true;

@@ -1,4 +1,3 @@
-// API service for communicating with JSON server - Enhanced with sharing functionality
 import axios from 'axios';
 import type { User, LoginCredentials, RegisterCredentials, ShoppingItem, UserUpdateData, ShareableList } from '../types';
 
@@ -11,19 +10,10 @@ const api = axios.create({
   },
 });
 
-// Simple encryption/decryption functions
-const encryptPassword = (password: string): string => {
-  // In a real application, use a proper encryption library like bcrypt
-  return btoa(password);
-};
+const encryptPassword = (password: string): string => btoa(password);
 
-const decryptPassword = (encryptedPassword: string): string => {
-  
-  // In a real application, use proper decryption
-  return atob(encryptedPassword);
-};
+const decryptPassword = (encryptedPassword: string): string => atob(encryptedPassword);
 
-// Demo account data
 const DEMO_USER = {
   id: 'demo-user-123',
   email: 'demo@example.com',
@@ -35,7 +25,6 @@ const DEMO_USER = {
   createdAt: new Date().toISOString(),
 };
 
-// Demo shopping list items
 const DEMO_ITEMS: ShoppingItem[] = [
   {
     id: 'demo-item-1',
@@ -83,15 +72,11 @@ const DEMO_ITEMS: ShoppingItem[] = [
   },
 ];
 
-// Helper function to ensure demo account exists
 const ensureDemoAccountExists = async () => {
   try {
     const response = await api.get(`/users?id=${DEMO_USER.id}`);
     if (response.data.length === 0) {
-      // Create demo user
       await api.post('/users', DEMO_USER);
-      
-      // Create demo shopping list
       await api.post('/shoppingLists', {
         id: `list-${DEMO_USER.id}`,
         userId: DEMO_USER.id,
@@ -103,44 +88,36 @@ const ensureDemoAccountExists = async () => {
   }
 };
 
-// Auth API
 export const authAPI = {
   login: async (credentials: LoginCredentials): Promise<User> => {
-    // Ensure demo account exists
     await ensureDemoAccountExists();
-    
-    // Get all users to find matching email
+
     const response = await api.get(`/users?email=${credentials.email}`);
     const users = response.data;
-    
+
     if (users.length === 0) {
       throw new Error('Invalid email or password');
     }
-    
+
     const user = users[0];
-    
-    // Decrypt stored password for comparison
     const decryptedPassword = decryptPassword(user.password);
-    
+
     if (decryptedPassword !== credentials.password) {
       throw new Error('Invalid email or password');
     }
-    
+
     const { password, ...userWithoutPassword } = user;
     return userWithoutPassword;
   },
 
   register: async (credentials: RegisterCredentials): Promise<User> => {
-    // Check if user already exists
     const existingUsers = await api.get(`/users?email=${credentials.email}`);
     if (existingUsers.data.length > 0) {
       throw new Error('User with this email already exists');
     }
 
-    // Encrypt password before storing
     const encryptedPassword = encryptPassword(credentials.password);
 
-    // Create new user
     const newUser = {
       id: Date.now().toString(),
       email: credentials.email,
@@ -153,8 +130,7 @@ export const authAPI = {
     };
 
     const response = await api.post('/users', newUser);
-    
-    // Create empty shopping list for new user
+
     await api.post('/shoppingLists', {
       id: Date.now().toString(),
       userId: newUser.id,
@@ -165,30 +141,34 @@ export const authAPI = {
     return user;
   },
 
-  updateProfile: async (userId: string, updates: UserUpdateData): Promise<User> => {
-    // If password is being updated, encrypt it
-    let updatedData = { ...updates };
+  updateProfile: async (userId: string, updates: UserUpdateData & { currentPassword?: string }): Promise<User> => {
     if (updates.password) {
-      updatedData = {
-        ...updates,
-        password: encryptPassword(updates.password)
-      };
+      const userResponse = await api.get(`/users/${userId}`);
+      const existingUser = userResponse.data;
+      const decryptedStored = decryptPassword(existingUser.password);
+      if (!updates.currentPassword || decryptedStored !== updates.currentPassword) {
+        throw new Error('Current password is incorrect');
+      }
     }
-    
+
+    const { currentPassword: _cp, ...rest } = updates as any;
+    let updatedData: any = { ...rest };
+    if (rest.password) {
+      updatedData.password = encryptPassword(rest.password);
+    }
+
     const response = await api.patch(`/users/${userId}`, updatedData);
     const { password, ...user } = response.data;
     return user;
   },
 };
 
-// Shopping List API
 export const shoppingListAPI = {
   getList: async (userId: string): Promise<ShoppingItem[]> => {
     const response = await api.get(`/shoppingLists?userId=${userId}`);
     const lists = response.data;
-    
+
     if (lists.length === 0) {
-      // Create empty list if none exists
       await api.post('/shoppingLists', {
         id: Date.now().toString(),
         userId,
@@ -196,14 +176,14 @@ export const shoppingListAPI = {
       });
       return [];
     }
-    
+
     return lists[0].items || [];
   },
 
   updateList: async (userId: string, items: ShoppingItem[]): Promise<void> => {
     const response = await api.get(`/shoppingLists?userId=${userId}`);
     const lists = response.data;
-    
+
     if (lists.length > 0) {
       await api.patch(`/shoppingLists/${lists[0].id}`, { items });
     } else {
@@ -215,32 +195,27 @@ export const shoppingListAPI = {
     }
   },
 
-  // NEW: Generate share token for sharing lists
   generateShareToken: async (userId: string, items: ShoppingItem[]): Promise<string> => {
     const shareToken = `share_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    
-    // Get user info for the shareable list
+
     const userResponse = await api.get(`/users/${userId}`);
     const user = userResponse.data;
-    
-    // Create shareable list
+
     const shareableList: ShareableList = {
       items,
       ownerName: `${user.name} ${user.surname}`,
       createdAt: new Date().toISOString(),
     };
-    
-    // Store the shareable list with the token
+
     await api.post('/sharedLists', {
       id: shareToken,
       shareToken,
       ...shareableList,
     });
-    
+
     return shareToken;
   },
 
-  // NEW: Get shared list by token
   getSharedList: async (shareToken: string): Promise<ShareableList> => {
     const response = await api.get(`/sharedLists/${shareToken}`);
     return response.data;

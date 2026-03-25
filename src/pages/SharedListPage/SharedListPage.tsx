@@ -64,8 +64,7 @@ const SharedListPage: React.FC = () => {
   return (
     <div className="shared-page">
       {/* Header banner */}
-      <div className="shared-page__banner">
-        <div className="shared-page__banner-inner">
+      <div className="shared-page__banner">        <div className="shared-page__banner-inner">
           <p className="shared-page__banner-label">Shared Shopping List</p>
           <h1 className="shared-page__banner-title">
             {sharedData.ownerName}&apos;s List
@@ -95,7 +94,6 @@ const SharedListPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Items */}
       <div className="shared-page__content">
         {sortedItems.length === 0 ? (
           <div className="shared-page__state-card">

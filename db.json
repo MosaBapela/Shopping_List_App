@@ -19,6 +19,16 @@
       "cellNumber": "+1234567890",
       "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
       "createdAt": "2026-02-06T14:07:30.554Z"
+    },
+    {
+      "id": "1774387592318",
+      "email": "darulo@gmail.com",
+      "password": "OTg3NjU0MzIx",
+      "name": "Jason",
+      "surname": "Darulo",
+      "cellNumber": "0745689541",
+      "avatar": "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+      "createdAt": "2026-03-24T21:26:32.318Z"
     }
   ],
   "shoppingLists": [
@@ -79,6 +89,38 @@
           "images": [],
           "createdAt": 1770041250555,
           "updatedAt": 1770041250555
+        }
+      ]
+    },
+    {
+      "id": "1774387592352",
+      "userId": "1774387592318",
+      "items": [
+        {
+          "id": "eb2392a5-f3ad-468b-acd4-d9a436607395",
+          "text": "Orange",
+          "completed": false,
+          "quantity": 4,
+          "notes": "Fresh oranges",
+          "category": "grocery",
+          "images": [
+            "https://th.bing.com/th/id/OIP.NTeLrolKUYCqPBP9UmktTQHaHa?w=174&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+          ],
+          "createdAt": 1774422591610,
+          "updatedAt": 1774422601560
+        },
+        {
+          "id": "705e29d0-0a9a-46ba-a2ee-0cb46725452f",
+          "text": "Table",
+          "completed": false,
+          "quantity": 1,
+          "notes": "Strong table",
+          "category": "household",
+          "images": [
+            "https://th.bing.com/th/id/OIP.X5sKDKQkrZcD0v2xznRmuAHaFj?w=279&h=210&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+          ],
+          "createdAt": 1774422654837,
+          "updatedAt": 1774422654837
         }
       ]
     }

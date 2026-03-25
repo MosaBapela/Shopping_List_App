@@ -4,7 +4,23 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { registerUser, clearError } from '../../store/slices/authSlice';
 import { setRegisterFormField, clearRegisterForm } from '../../store/slices/formSlice';
+import { useToast } from '../../context/ToastContext';
 import './RegisterPage.css';
+
+const EyeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+
+const EyeOffIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+    <line x1="1" y1="1" x2="23" y2="23" />
+  </svg>
+);
 
 const RegisterPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -13,10 +29,16 @@ const RegisterPage: React.FC = () => {
   const { isLoading, error, isAuthenticated } = useAppSelector(state => state.auth);
   const { registerForm } = useAppSelector(state => state.form);
   const { name, surname, email, cellNumber, password, confirmPassword, showPassword, showConfirmPassword } = registerForm;
+  const { showToast } = useToast();
+  const hasRegistered = React.useRef(false);
 
   useEffect(() => {
-    if (isAuthenticated) navigate('/', { replace: true });
-  }, [isAuthenticated, navigate]);
+    if (isAuthenticated && !hasRegistered.current) {
+      hasRegistered.current = true;
+      showToast('success', 'Account created!', 'Welcome to ShopList. You are now signed in.');
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate, showToast]);
 
   useEffect(() => {
     dispatch(clearError());
@@ -123,8 +145,9 @@ const RegisterPage: React.FC = () => {
               />
               <button type="button" className="auth-pw-toggle"
                 onClick={() => handleInputChange('showPassword', !showPassword)}
-                disabled={isLoading}>
-                {showPassword ? '&#128065;' : '&#128065;&#8205;&#128683;'}
+                disabled={isLoading}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}>
+                {showPassword ? <EyeOffIcon /> : <EyeIcon />}
               </button>
             </div>
           </div>
@@ -143,8 +166,9 @@ const RegisterPage: React.FC = () => {
               />
               <button type="button" className="auth-pw-toggle"
                 onClick={() => handleInputChange('showConfirmPassword', !showConfirmPassword)}
-                disabled={isLoading}>
-                {showConfirmPassword ? '&#128065;' : '&#128065;&#8205;&#128683;'}
+                disabled={isLoading}
+                aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}>
+                {showConfirmPassword ? <EyeOffIcon /> : <EyeIcon />}
               </button>
             </div>
           </div>

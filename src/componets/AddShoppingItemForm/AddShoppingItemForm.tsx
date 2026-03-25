@@ -1,5 +1,4 @@
-﻿// Add Shopping Item Form Component
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
@@ -98,7 +97,6 @@ const AddShoppingItemForm: React.FC<AddShoppingItemFormProps> = ({ onCancel, sho
 
       <form onSubmit={handleSubmit}>
         <div className="add-form__grid">
-          {/* Name */}
           <div className="add-form__field add-form__grid--full">
             <label className="add-form__label">Item Name<span className="add-form__required">*</span></label>
             <input
@@ -114,7 +112,6 @@ const AddShoppingItemForm: React.FC<AddShoppingItemFormProps> = ({ onCancel, sho
             {errors.text && <span className="add-form__error-text">{errors.text}</span>}
           </div>
 
-          {/* Quantity */}
           <div className="add-form__field">
             <label className="add-form__label">Quantity</label>
             <div className="add-form__qty-row">
@@ -124,7 +121,6 @@ const AddShoppingItemForm: React.FC<AddShoppingItemFormProps> = ({ onCancel, sho
             </div>
           </div>
 
-          {/* Category */}
           <div className="add-form__field">
             <label className="add-form__label">Category</label>
             <select value={formData.category} onChange={e => set('category', e.target.value)} className="add-form__select" disabled={isSubmitting}>
@@ -132,13 +128,11 @@ const AddShoppingItemForm: React.FC<AddShoppingItemFormProps> = ({ onCancel, sho
             </select>
           </div>
 
-          {/* Notes */}
           <div className="add-form__field add-form__grid--full">
             <label className="add-form__label">Notes</label>
             <textarea value={formData.notes} onChange={e => set('notes', e.target.value)} placeholder="Any extra details..." className="add-form__textarea" disabled={isSubmitting} maxLength={500} />
           </div>
 
-          {/* Images */}
           <div className="add-form__field add-form__grid--full">
             <label className="add-form__label">Images</label>
             <div className="add-form__img-controls">
